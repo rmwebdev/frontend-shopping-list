@@ -20,7 +20,7 @@ class Profile extends Component  {
 
                         <CardImg style={{ width: "30%", margin: "auto", borderRadius: "50%", marginTop: "2rem" }} top width="100%" src="https://avatars.githubusercontent.com/u/47350072?v=4" alt="Card image cap" />
                       <CardBody>
-                        <CardTitle tag="h5">{user.name}  </CardTitle>
+                        <CardTitle tag="h5">{user.name}  <Download /></CardTitle>
                         <CardSubtitle tag="h6" className="mb-2 text-muted">Fullstack Developer </CardSubtitle>
                         <CardText style={{ marginTop: "2rem"}}>
                                 <Label for="exampleAddress" style={{ marginBottom: "1rem", marginTop: "1rem"}}>Telepon</Label>
