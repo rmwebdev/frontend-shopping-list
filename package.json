@@ -46,10 +46,6 @@
     ]
   },
   "rules": {
-    "import/no-anonymous-default-export": 0,
-    "jsx-a11y/img-redundant-alt": [ 2, {
-      "components": [ "Image" ],
-      "words": [ "Bild", "Foto" ]
-    }]
+    "import/no-anonymous-default-export": 0
   }
 }
