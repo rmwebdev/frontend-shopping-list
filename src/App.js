@@ -1,27 +1,31 @@
 import React, { Component } from 'react'
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import { Provider } from 'react-redux';
+// import { Provider } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './Home';
 import store from './store';
+import { loadUser } from './actions/authActions';
 import AppNavbar from './components/AppNavbar';
-import ShoppingList from './components/ShoppingList';
-import ItemModal from './components/itemModal';
-import { Container } from 'reactstrap';
+import Profile from './components/Profile';
 class App extends Component {
+
+  componentDidMount() {
+    store.dispatch(loadUser());
+  }
   render() {
     return (
-     <Provider store={ store }>
-        <div className="App">
+        <Router>
+      <div className="App">
             <AppNavbar />
-          <Container>
-          <ItemModal />
-            <ShoppingList />
-          </Container>
+            <Switch>
+            <Route  exact path="/" component={ Home } />
+            <Route  exact path="/profile" component={ Profile } />
+            </Switch>
       </div>
-     </Provider>
+     </Router>
     );
   }
   }
-  
 
 export default App;

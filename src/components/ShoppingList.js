@@ -6,9 +6,15 @@ import { getItems, deleteItem } from '../actions/itemActions';
 import PropTypes from 'prop-types';
 
 class ShoppingList extends Component  {
+    static propTypes = {
+        isAuthenticated: PropTypes.bool,
+        getItems: PropTypes.func.isRequired,
+        item: PropTypes.object.isRequired,
+    }
     componentDidMount() {
         this.props.getItems();
     }
+  
     onDeleteClick = (id) => {
         this.props.deleteItem(id);
     }
@@ -16,19 +22,18 @@ class ShoppingList extends Component  {
 
         const { items } = this.props.item;
         return (
-            <Container>
-                
+            <Container>     
                 <ListGroup>
                     <TransitionGroup className="shopping-list">
                             { items.map(({ _id, name }) => (
                                 <CSSTransition key={_id} timeout={500} classNames="fade">
                                     <ListGroupItem className="">
-                                    <Button
+                                        { this.props.isAuthenticated ?  <Button
                                         className="remove-btn"
                                         color="danger"
                                         size="sm"
                                         onClick={ this.onDeleteClick.bind(this, _id)}
-                                        >&times;</Button>
+                                        >&times;</Button>: ''}
                                         {name}
                                     </ListGroupItem>
                                 </CSSTransition>
@@ -39,11 +44,9 @@ class ShoppingList extends Component  {
         )
     }
 }
-ShoppingList.propTypes = {
-    getItems: PropTypes.func.isRequired,
-    item: PropTypes.object.isRequired
-}
+
 const mapStateToProps = (state) => ({
-    item: state.item
+    item: state.item,
+    isAuthenticated: state.auth.isAuthenticated
 })
 export default connect(mapStateToProps, { getItems, deleteItem })(ShoppingList);
