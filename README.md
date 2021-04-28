@@ -1,7 +1,7 @@
 <h1 align="center">
   MERN STACK SHOPPING LIST
 </h1>
-This is the version 1 of [Pokedex V2 Demo](https://daftar-belanja.herokuapp.com/). More cleaned and user friendly code are applied.
+This is the version 1 of [Daftar Belanja](https://daftar-belanja.herokuapp.com/). More cleaned and user friendly code are applied.
 
 ## 📐 Project setup
 ```
